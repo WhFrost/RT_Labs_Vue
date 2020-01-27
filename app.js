@@ -13,41 +13,34 @@ Vue.component("navigation", {
           children: [
             {
               url: "#",
-              name: "Пункт меню номер 1",
-              target: "_blank"
+              name: "Пункт меню номер 1"
             },
             {
               url: "#",
-              name: "Пункт меню номер 2",
-              target: "_blank"
+              name: "Пункт меню номер 2"
             },
             {
               url: "#",
-              name: "Пункт меню номер 3",
-              target: "_blank"
+              name: "Пункт меню номер 3"
             },
             {
               url: "#",
-              name: "Пункт меню номер 4",
-              target: "_blank"
+              name: "Пункт меню номер 4"
             },
             {
               url: "#",
-              name: "Пункт меню номер 5",
-              target: "_blank"
+              name: "Пункт меню номер 5"
             },
             {
               url: "#",
               name: "Пункт меню номер 6",
-              target: "_blank",
               children: [
-                {url: "#", name: "Подпункт меню номер 1", target: "_blank"}
+                {url: "#", name: "Подпункт меню номер 1", target: "_blank"},
               ]
             },
             {
               url: "#",
-              name: "Пункт меню номер 7",
-              target: "_blank"
+              name: "Пункт меню номер 7"
             }
           ]
         },
@@ -68,9 +61,9 @@ Vue.component("navigation", {
                 <div :class="{ isOpen }" class="sub-menu">
                     <ul>
                         <li 
-                          v-for="{ url, name, index, target } in item.children" 
+                          v-for="{ url, name, index } in item.children" 
                           :key="index">
-                            <a :href="url" :title="name" :target="target">{{ name }}</a>
+                            <a :href="url" :title="name">{{ name }}</a>
                         </li>
                     </ul>
                 </div>
