@@ -34,8 +34,10 @@ Vue.component("navigation", {
             {
               url: "#",
               name: "Пункт меню номер 6",
-              children: [
-                {url: "#", name: "Подпункт меню номер 1", target: "_blank"},
+              subChildren: [
+                {url: "#", name: "Подпункт меню номер 1"},
+                {url: "#", name: "Подпункт меню номер 2"},
+                {url: "#", name: "Подпункт меню номер 3"}
               ]
             },
             {
@@ -52,11 +54,11 @@ Vue.component("navigation", {
   template: `
     <ul id="navigation">
         <li v-for="item in mainMenu">
-            <template v-if="item.children">
+            <template v-if="item.children || item.subChildren">
                 <a 
                   :href="item.url" 
                   :title="item.name" 
-                  @click="isOpen = !isOpen, active = !active" 
+                  @mouseover="isOpen = !isOpen, active = !active" 
                   :class="{ active }">{{ item.name }}</a>
                 <div :class="{ isOpen }" class="sub-menu">
                     <ul>
@@ -64,7 +66,16 @@ Vue.component("navigation", {
                           v-for="{ url, name, index } in item.children" 
                           :key="index">
                             <a :href="url" :title="name">{{ name }}</a>
-                        </li>
+                          <div :class="{ isOpen }" class="sub-menu-2">
+                            <ul>
+                              <li 
+                                v-for="{ url, name, index } in item.subChildren" 
+                                :key="index">
+                                <a :href="url" :title="name">{{ name }}</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li> 
                     </ul>
                 </div>
             </template>
